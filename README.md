@@ -9,4 +9,4 @@ The *Postgres over REST* service provides a simple web api to query Postgres/Red
 This service does not attempt to provide authentication or authorization functionality.  Please use a security product such as Cognito to provide such services.
 
 ## How to test
-Using ChartFactor Studio, you can use the Redshift provider and URL http://127.0.0.1:3000" to visualize your data files.
+Using ChartFactor Studio, you can use the Redshift provider and URL http://127.0.0.1:3000 to visualize your data files.

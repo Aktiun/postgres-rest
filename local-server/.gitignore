@@ -1,0 +1,12 @@
+node_modules/*
+npm-debug.log
+webpack-assets.json
+/nbproject/private/
+.DS_Store
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/chrome/
+*.dev.js
+*.js.map
+.vscode/*
+tags

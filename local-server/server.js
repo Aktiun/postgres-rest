@@ -2,6 +2,8 @@
 
 const { Pool } = require('pg');
 const config = require('./config.json');
+const pg_types = require('pg-types')
+const { invert } = require('lodash');
 const connectionString = `postgresql://${config.pgUser}:${config.pgPassword}@${config.pgServer}:` +
   `${config.pgPort}/postgres`;
 const pool = new Pool({
@@ -137,8 +139,12 @@ fastify.post('/query', async (request, reply) => {
 
         try {
             const res = await client.query(query);
+            const types = invert(pg_types.builtins);
+            const schema = res.fields.map(f => {
+              return { name: f.name, type: types[f.dataTypeID] }
+            })
 
-            return JSON.stringify(res.rows);
+            return JSON.stringify({ data: res.rows, schema });
         } catch (err) {
             console.log(err);
             return JSON.stringify(err);

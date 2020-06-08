@@ -5,7 +5,7 @@ const config = require('./config.json');
 const pg_types = require('pg-types')
 const { invert } = require('lodash');
 const connectionString = `postgresql://${config.pgUser}:${config.pgPassword}@${config.pgServer}:` +
-  `${config.pgPort}/postgres`;
+  `${config.pgPort}/${config.pgDbname}`;
 const pool = new Pool({
     connectionString: connectionString,
     idleTimeoutMillis: 30000,

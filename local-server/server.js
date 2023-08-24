@@ -52,12 +52,14 @@ fastify.get('/schemas', async (request, reply) => {
             return JSON.stringify(schema);
         } catch (err) {
             console.log(err);
+            reply.code(500).type('text/html').send('Query error: ' + err.message);
             return JSON.stringify(err);
         } finally {
             await client.release();
         }
     } catch (err) {
         console.log(err);
+        reply.code(500).type('text/html').send('Query error: ' + err.message);
         return JSON.stringify(err);
     }
 });
@@ -78,12 +80,14 @@ fastify.get('/schemas/:schema/tables', async (request, reply) => {
             return JSON.stringify(tables);
         } catch (err) {
             console.log(err);
+            reply.code(500).type('text/html').send('Query error: ' + err.message);
             return JSON.stringify(err);
         } finally {
             await client.release();
         }
     } catch (err) {
         console.log(err);
+        reply.code(500).type('text/html').send('Query error: ' + err.message);
         return JSON.stringify(err);
     }
 });
@@ -111,12 +115,14 @@ fastify.get('/schemas/:schema/tables/:table', async (request, reply) => {
             });
         } catch (err) {
             console.log(err);
+            reply.code(500).type('text/html').send('Query error: ' + err.message);
             return JSON.stringify(err);
         } finally {
             await client.release();
         }
     } catch (err) {
         console.log(err);
+        reply.code(500).type('text/html').send('Query error: ' + err.message);
         return JSON.stringify(err);
     }
 });
@@ -147,12 +153,14 @@ fastify.post('/query', async (request, reply) => {
             return JSON.stringify({ data: res.rows, schema });
         } catch (err) {
             console.log(err);
+            reply.code(500).type('text/html').send('Query error: ' + err.message);
             return JSON.stringify(err);
         } finally {
             await client.release();
         }
     } catch (err) {
         console.log(err);
+        reply.code(500).type('text/html').send('Query error: ' + err.message);
         return JSON.stringify(err);
     }
 });

@@ -1,7 +1,0 @@
-{
-    "pgServer": "127.0.0.1",
-    "pgUser": "postgres",
-    "pgPassword": "passpg",
-    "pgPort": 5432,
-    "pgDbname": "postgres"
-}

@@ -1,0 +1,22 @@
+# Use a lightweight Node.js runtime
+FROM node:18-alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy package metadata and install deps
+COPY package*.json ./
+RUN npm install --production
+
+# Bundle app source
+COPY . .
+
+# Expose the port Fastify listens on
+EXPOSE 3000
+
+# (Optional) A basic healthcheck
+HEALTHCHECK --interval=30s --timeout=5s \
+  CMD wget --quiet --tries=1 --spider http://localhost:3000/schemas || exit 1
+
+# Start the server
+CMD ["node", "server.js"]

@@ -1,11 +1,12 @@
 'use strict';
 
 const { Pool } = require('pg');
-const config = require('./config.json');
+const config = require('./config.js');
 const pg_types = require('pg-types')
 const { invert } = require('lodash');
-const connectionString = `postgresql://${config.pgUser}:${config.pgPassword}@${config.pgServer}:` +
-  `${config.pgPort}/${config.pgDbname}`;
+const connectionString = 
+  `postgresql://${config.user}:${config.password}@${config.host}:` +
+  `${config.port}/${config.database}`;
 const pool = new Pool({
     connectionString: connectionString,
     idleTimeoutMillis: 30000,
@@ -167,7 +168,7 @@ fastify.post('/query', async (request, reply) => {
 
 const start = async () => {
     try {
-        await fastify.listen(3000);
+        await fastify.listen({ port: 3000, host: '0.0.0.0' });
         fastify.log.info(`server listening on ${fastify.server.address().port}`);
     } catch (err) {
         fastify.log.error(err);

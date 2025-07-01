@@ -6,7 +6,7 @@ echo "Pruning orphans docker objects"
 # docker container prune -f
 # docker volume prune -f
 echo "Creating new container instance"
-docker run -d -p 5432:5432 --name cf_postgis -v "$PWD"/:/opt/demo/ -e POSTGRES_PASSWORD=passpg -d postgis/postgis
+docker run -d -p 5432:5432 --name cf_postgis -v "$PWD"/:/opt/demo/ -e POSTGRES_PASSWORD=passpg -d postgis/postgis:15-3.5
 sleep 5
 
 echo "Creating Ticket Sales Table Schema"

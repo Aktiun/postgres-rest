@@ -9,4 +9,5 @@ webpack-assets.json
 *.dev.js
 *.js.map
 .vscode/*
+/.idea
 tags

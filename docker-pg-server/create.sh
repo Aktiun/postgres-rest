@@ -24,3 +24,7 @@ echo "Creating Issue Worklogs Table Schema"
 docker exec -it cf_postgis psql -U postgres -f /opt/demo/issue_worklogs.sql
 echo "Uploading Issue Worklogs Data"
 docker exec -it cf_postgis psql -U postgres -d postgres -c "\COPY issue_worklogs(_airbyte_raw_id,_airbyte_extracted_at,_airbyte_meta,_airbyte_generation_id,id,self,author,comment,created,\"issueId\",started,updated,\"timeSpent\",properties,visibility,\"updateAuthor\",\"timeSpentSeconds\") FROM '/opt/demo/issue_worklogs.csv' DELIMITER ',' CSV HEADER;"
+
+# create a view
+echo "Creating Issue Worklogs View"
+docker exec -it cf_postgis psql -U postgres -f /opt/demo/issue_worklogs_view.sql

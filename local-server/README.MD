@@ -45,3 +45,15 @@ docker push $NAMESPACE/postgres-rest:latest
 ### Verify successful push to Docker Hub
 
 Visit https://hub.docker.com/repository/docker/{namespace}/postgres-rest and you should see your image’s tags.
+
+### Running Docker container using existing image in Docker Hub
+
+```
+docker run -p 3000:3000 \
+  -e PGHOST=host.docker.internal \
+  -e PGPORT=5432 \
+  -e PGUSER=postgres \
+  -e PGPASSWORD=passpg \
+  -e PGDATABASE=postgres \
+  jorgealarcon/postgres-rest:latest
+```

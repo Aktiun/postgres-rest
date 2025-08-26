@@ -20,6 +20,8 @@ docker build -t postgres-rest:latest .
 
 ### Running Docker container
 
+Adjust the command below with the values for your Postgres instance.
+
 ```
 docker run -p 3000:3000 \
   -e PGHOST=host.docker.internal \
@@ -47,6 +49,8 @@ docker push $NAMESPACE/postgres-rest:latest
 Visit https://hub.docker.com/repository/docker/{namespace}/postgres-rest and you should see your image’s tags.
 
 ### Running Docker container using existing image in Docker Hub
+
+Adjust the command below with the values for your Postgres instance.
 
 ```
 docker run -p 3000:3000 \

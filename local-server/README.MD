@@ -2,7 +2,7 @@
 
 ## Starting the service for development
 
-- Make sure your node is version 16
+- Make sure your node is version 22
 - Run `npm i` the first time to install package dependencies
 - Run the following command:
 

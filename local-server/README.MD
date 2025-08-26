@@ -12,13 +12,13 @@ node server.js
 
 ## Using Docker
 
-## Creating Docker image
+### Creating Docker image
 
 ```
 docker build -t postgres-rest:latest .
 ```
 
-## Running Docker container
+### Running Docker container
 
 ```
 docker run -p 3000:3000 \
@@ -30,7 +30,7 @@ docker run -p 3000:3000 \
   postgres-rest
 ```
 
-## Push to Docker Hub
+### Push to Docker Hub
 
 ```
 export DOCKER_PASSWORD='your_actual_password_or_token'
@@ -42,7 +42,7 @@ docker tag postgres-rest:latest $NAMESPACE/postgres-rest:latest
 docker push $NAMESPACE/postgres-rest:latest
 ```
 
-### Verify successful push to Docker Hub
+#### Verify successful push to Docker Hub
 
 Visit https://hub.docker.com/repository/docker/{namespace}/postgres-rest and you should see your image’s tags.
 

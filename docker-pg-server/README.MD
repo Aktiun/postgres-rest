@@ -1,7 +1,12 @@
-# Starting Docker with PostgreSQL and Ticket Sales Data Source
+# Starting a PostgreSQL Docker container and uploading test datasets
 
-Please make sure the following items are met:
-* You are not running a process on port 5432
-* You installed [docker](https://docs.docker.com/install/)
+## Requirements
 
-Now you can run `./create.sh` and after the script ends, you can check if the container is running with the command `docker ps` the container has the name pg_ticket_sales.
+* [Docker](https://docs.docker.com/install/) is installed in your machine
+* Port 5432 is available
+
+## Command
+
+Run `./create.sh` in your terminal.
+
+After the script ends, you can check that the container is running by using the `docker ps` command. 

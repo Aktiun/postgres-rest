@@ -9,6 +9,10 @@ echo "Creating new container instance"
 docker run -d -p 5432:5432 --name cf_postgis -v "$PWD"/:/opt/demo/ -e POSTGRES_PASSWORD=passpg -d postgis/postgis:15-3.5
 sleep 5
 
+echo "Creating bbox_boundary_test Table Schema"
+docker exec -it cf_postgis psql -U postgres -f /opt/demo/bbox_boundary_test.sql
+echo "Uploading bbox_boundary_test Data"
+docker exec -it cf_postgis psql -U postgres -d postgres -c "\COPY bbox_boundary_test(value,name,latitude,longitude) FROM '/opt/demo/bbox_boundary_test.csv' DELIMITER ',' CSV HEADER;"
 echo "Creating Ticket Sales Table Schema"
 docker exec -it cf_postgis psql -U postgres -f /opt/demo/ticket_sales.sql
 echo "Uploading Ticket Sales Data"

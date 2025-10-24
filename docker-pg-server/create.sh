@@ -6,7 +6,14 @@ echo "Pruning orphans docker objects"
 # docker container prune -f
 # docker volume prune -f
 echo "Creating new container instance"
-docker run -d -p 5432:5432 --name cf_postgis -v "$PWD"/:/opt/demo/ -e POSTGRES_PASSWORD=passpg -d postgis/postgis:15-3.5
+ARCH="$(uname -m)"
+PLATFORM_ARGS=""
+if [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+  # Force amd64 image on Apple Silicon where alpine variant lacks arm64 manifest
+  PLATFORM_ARGS="--platform linux/amd64"
+fi
+
+docker run -d -p 5432:5432 --name cf_postgis -v "$PWD"/:/opt/demo/ -e POSTGRES_PASSWORD=passpg $PLATFORM_ARGS postgis/postgis:15-3.5
 sleep 5
 
 echo "Creating bbox_boundary_test Table Schema"

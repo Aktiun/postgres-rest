@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@fastify/cors": "^11.1.0",
-    "fastify": "^5.5.0",
+    "fastify": "^5.8.5",
     "lodash": "^4.17.21",
     "make-promises-safe": "^5.0.0",
     "pg": "^8.7.1"
